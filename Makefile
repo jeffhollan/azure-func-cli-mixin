@@ -1,5 +1,5 @@
 MIXIN = functions
-PKG = get.porter.sh/mixin/$(MIXIN)
+PKG = github.com/jeffhollan/azure-func-cli-mixin
 SHELL = bash
 
 GO = GO111MODULE=on go
