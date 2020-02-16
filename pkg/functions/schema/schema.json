@@ -4,40 +4,40 @@
     "installStep": {
       "type": "object",
       "properties": {
-        "skeletor": {"$ref": "#/definitions/skeletor"}
+        "functions": {"$ref": "#/definitions/functions"}
       },
       "required": [
-        "skeletor"
+        "functions"
       ],
       "additionalProperties": false
     },
     "upgradeStep": {
       "type": "object",
       "properties": {
-        "skeletor": {"$ref": "#/definitions/skeletor"}
+        "functions": {"$ref": "#/definitions/functions"}
       },
       "required": [
-        "skeletor"
+        "functions"
       ],
       "additionalProperties": false
     },
     "invokeStep": {
       "type": "object",
       "properties": {
-        "skeletor": {"$ref": "#/definitions/skeletor"}
+        "functions": {"$ref": "#/definitions/functions"}
       },
       "required": [
-        "skeletor"
+        "functions"
       ],
       "additionalProperties": false
     },
     "uninstallStep": {
       "type": "object",
       "properties": {
-        "skeletor": {"$ref": "#/definitions/skeletor"}
+        "functions": {"$ref": "#/definitions/functions"}
       },
       "required": [
-        "skeletor"
+        "functions"
       ],
       "additionalProperties": false
     },
@@ -74,7 +74,7 @@
         ]
       }
     },
-    "skeletor": {
+    "functions": {
       "type": "object",
       "properties": {
         "description": {

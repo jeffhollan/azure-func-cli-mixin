@@ -1,4 +1,4 @@
-module get.porter.sh/mixin/skeletor
+module github.com/jeffhollan/azure-func-cli-mixin
 
 go 1.13
 
