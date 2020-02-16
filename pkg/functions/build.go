@@ -1,20 +1,29 @@
 package functions
 
-// This is an example. Replace the following with whatever steps are needed to
-// install required components into
-// const dockerfileLines = `RUN apt-get update && \
-// apt-get install gnupg apt-transport-https lsb-release software-properties-common -y && \
-// echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ stretch main" | \
-//    tee /etc/apt/sources.list.d/azure-cli.list && \
-// apt-key --keyring /etc/apt/trusted.gpg.d/Microsoft.gpg adv \
-// 	--keyserver packages.microsoft.com \
-// 	--recv-keys BC528686B50D79E339D3721CEB3E94ADBE1229CF && \
-// apt-get update && apt-get install azure-cli
-// `
+import "fmt"
 
 // Build will generate the necessary Dockerfile lines
 // for an invocation image using this mixin
 func (m *Mixin) Build() error {
-	//fmt.Fprintf(m.Out, dockerfileLines)
+	const dockerfileLines = `RUN apt-get install -y \
+  curl \
+  libicu57 \
+  libunwind8 \
+  unzip \
+  wget
+
+RUN curl -s https://api.github.com/repos/azure/azure-functions-core-tools/releases/latest \
+  | grep "browser_download_url.*linux-x64.*zip\"" \
+  | cut -d : -f 2,3 \
+  | tr -d \" \
+  | wget -qi -
+
+RUN unzip Azure.Functions.*.zip -d /func-cli
+RUN chmod +x /func-cli/func
+
+RUN ln -s /func-cli/func /usr/bin/func 
+	`
+
+	fmt.Fprintf(m.Out, dockerfileLines)
 	return nil
 }
